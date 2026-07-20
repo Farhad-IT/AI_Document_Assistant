@@ -2,7 +2,6 @@ from datetime import datetime, timezone
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-
 from app.auth.auth_repository import AuthRepository
 from app.auth.auth_schemas import TokenSchema, LoginSchema, UserSchema, UserCreateSchema
 

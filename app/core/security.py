@@ -10,7 +10,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.refresh_model import RefreshTokenModel
 from app.models.user_model import UserModel
-from app.core.settings import testing_settings
 
 from dotenv import load_dotenv
 
@@ -87,7 +86,7 @@ def set_auth_cookies(
         value=access_token,
         expires=access_token_expire,
         httponly=True,
-        secure=testing_settings.COOKIE_SECURE,
+        secure=True,
         samesite="lax",
     )
     response.set_cookie(
@@ -95,7 +94,7 @@ def set_auth_cookies(
         value=refresh_token,
         expires=refresh_token_expire,
         httponly=True,
-        secure=testing_settings.COOKIE_SECURE,
+        secure=True,
         samesite="lax",
     )
 

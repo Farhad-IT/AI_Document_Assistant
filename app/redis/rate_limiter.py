@@ -4,7 +4,6 @@ from time import time
 
 from fastapi import Request, HTTPException, Depends
 
-from app.core.settings import testing_settings
 from redis.asyncio import Redis
 from dotenv import load_dotenv
 
@@ -26,9 +25,6 @@ def rate_limiter(
     async def dependency(
         request: Request, redis: Redis | None = Depends(get_redis_client)
     ):
-        if testing_settings.TESTING:
-            return
-
         if redis is None:
             return
 
