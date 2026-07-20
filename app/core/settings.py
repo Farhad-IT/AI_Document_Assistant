@@ -1,9 +1,11 @@
 from pydantic_settings import BaseSettings
+from dotenv import load_dotenv
 
+load_dotenv()
 
-class TestingSettings(BaseSettings):
-    TESTING: bool = False
-    COOKIE_SECURE: bool = True
+class LLMSettings(BaseSettings):
+    GEMINI_API_KEY: str
+    GEMINI_MODEL: str
+    GEMINI_RESERVE_MODEL: str
 
-
-testing_settings = TestingSettings()
+llm_settings = LLMSettings()

@@ -23,3 +23,6 @@ class AuthException(AppException):
 
 class PermissionDeniedException(AppException):
     status_code = 403
+
+class GeminiException(AppException):
+    status_code = 503

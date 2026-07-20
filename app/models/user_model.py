@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from app.models.document_model import DocumentModel
     from app.models.refresh_model import RefreshTokenModel
+    from app.models.chat_history_model import ChatHistoryModel
 
 from datetime import datetime
 
@@ -29,3 +30,4 @@ class UserModel(Base):
 
     documents: Mapped[list["DocumentModel"]] = relationship(back_populates="user")
     refresh_token: Mapped["RefreshTokenModel"] = relationship(back_populates="user", uselist=False)
+    chat_history: Mapped[list["ChatHistoryModel"]] = relationship(back_populates="user")

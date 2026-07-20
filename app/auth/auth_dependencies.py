@@ -1,5 +1,7 @@
+from typing import Annotated
+
 import jwt
-from fastapi import Request
+from fastapi import Request, Depends, WebSocket
 
 from app.auth.auth_service import AuthException
 from app.models.user_model import UserModel
@@ -32,5 +34,33 @@ async def get_current_user(db: SessionDep, request: Request):
     if not user:
         logger.warning("User not found")
         raise AuthException("User not found")
+
+    return user
+
+CurrentUser = Annotated[UserModel, Depends(get_current_user)]
+
+async def get_current_user_ws(websocket: WebSocket, db: SessionDep):
+    token = websocket.cookies.get("access_token")
+
+    if not token:
+        return None
+
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    except Exception:
+        logger.error("Invalid token")
+        return None
+
+    user_id = payload.get("sub")
+
+    if not user_id:
+        logger.warning("Invalid token payload")
+        return None
+
+    user = await db.get(UserModel, int(user_id))
+
+    if not user:
+        logger.warning("User not found")
+        return None
 
     return user
