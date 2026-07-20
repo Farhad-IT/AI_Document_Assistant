@@ -49,12 +49,6 @@ AI Document Assistant — сервис для интеллектуального
                                                          Ответ пользователю
 ```
 
-## Фронтент
-
-![Снимок экрана_20-7-2026_221042_localhost.jpeg](../../Downloads/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_20-7-2026_221042_localhost.jpeg)
-
-![Снимок экрана_20-7-2026_22955_localhost.jpeg](../../Downloads/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_20-7-2026_22955_localhost.jpeg)
-
 ## Как работает система
 
 ### 1. Авторизация
